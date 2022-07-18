@@ -25,8 +25,8 @@ class HomeController extends Controller
                 ->paginate()
                 ->withQueryString();
         } else {
-          $blogs=  Blog::
-            with(['tags', 'thumbnail'])
+          $blogs=  Blog::where('published', true)
+            ->with(['tags', 'thumbnail'])
             ->latest('updated_at')
             ->paginate();
         }
